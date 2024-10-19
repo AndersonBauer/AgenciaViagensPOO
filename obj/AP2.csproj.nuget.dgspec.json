@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Ulbra 24(2)\\Laboratório de Programação\\AP2\\AP2.csproj": {}
+    "C:\\Ulbra 24(2)\\Laboratório de Programação\\AP2\\AP2-LB\\AP2.csproj": {}
   },
   "projects": {
-    "C:\\Ulbra 24(2)\\Laboratório de Programação\\AP2\\AP2.csproj": {
+    "C:\\Ulbra 24(2)\\Laboratório de Programação\\AP2\\AP2-LB\\AP2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Ulbra 24(2)\\Laboratório de Programação\\AP2\\AP2.csproj",
+        "projectUniqueName": "C:\\Ulbra 24(2)\\Laboratório de Programação\\AP2\\AP2-LB\\AP2.csproj",
         "projectName": "AP2",
-        "projectPath": "C:\\Ulbra 24(2)\\Laboratório de Programação\\AP2\\AP2.csproj",
+        "projectPath": "C:\\Ulbra 24(2)\\Laboratório de Programação\\AP2\\AP2-LB\\AP2.csproj",
         "packagesPath": "C:\\Users\\Anderson\\.nuget\\packages\\",
-        "outputPath": "C:\\Ulbra 24(2)\\Laboratório de Programação\\AP2\\obj\\",
+        "outputPath": "C:\\Ulbra 24(2)\\Laboratório de Programação\\AP2\\AP2-LB\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Anderson\\AppData\\Roaming\\NuGet\\NuGet.Config"
