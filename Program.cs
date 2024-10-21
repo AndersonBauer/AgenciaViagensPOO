@@ -1,14 +1,6 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 
 Agencia agencia = new Agencia();
-
-// agencia.CadastrarDestino(destino1);
-// Console.Write("Digite o codigo que voce desseja consultar: ");
-// string? teste = Console.ReadLine();
-
-// agencia.ConsultarDestinoPorCodigo(teste);
-// agencia.ListarDestino();
-
 bool continuar = true;
 
 while (continuar)
@@ -18,9 +10,9 @@ while (continuar)
     Console.WriteLine("2 - Cadastrar Pacote Turístico");
     Console.WriteLine("3 - Cadastrar Cliente");
     Console.WriteLine("4 - Consultar Pacote por Código");
-    Console.WriteLine("5 - Listar Pacotes");
-    Console.WriteLine("6 - Fazer Reserva");
-    Console.WriteLine("7 - Cancelar Reserva");
+    Console.WriteLine("5 - Listar Destino por código");
+    Console.WriteLine("6 - Listar Destino por código");
+    Console.WriteLine("7 - Listagem de todas as informações");
     Console.WriteLine("0 - Sair");
     Console.Write("Escolha uma opção: ");
 
@@ -69,14 +61,14 @@ while (continuar)
             string? nome = Console.ReadLine();
             if(nome == null)
             {
-                Console.WriteLine("Nenhuma entrada foi fornecida");
+                Console.WriteLine("Nenhuma entrada foi fornecida.\n");
                 break;
             }
             Console.Write("Digite o codigo do pacote: ");
             string? codigop = Console.ReadLine();
             if(codigop == null)
             {
-                Console.WriteLine("Nenhuma entrada foi fornecida");
+                Console.WriteLine("Nenhuma entrada foi fornecida.\n");
                 break;
             }
             Console.Write("Digite a data em que inicia este pacote: ");
@@ -90,13 +82,13 @@ while (continuar)
                 }
                 catch
                 {
-                    Console.WriteLine("Formato de data inválido, (dd/mm/aaaa)");
+                    Console.WriteLine("Formato de data inválido, (dd/mm/aaaa).\n");
                     break;
                 }
                 
             if(DataIString == null)
             {
-                Console.WriteLine("Nenhuma entrada foi fornecida");
+                Console.WriteLine("Nenhuma entrada foi fornecida.\n");
                 break;
             }
             }
@@ -113,13 +105,13 @@ while (continuar)
                 }
                 catch
                 {
-                    Console.WriteLine("Formato de data inválido,tente usar (dd/mm/aaaa)");
+                    Console.WriteLine("Formato de data inválido,tente usar (dd/mm/aaaa).\n");
                     break;
                 }
                 
             if(DataFim == null)
             {
-                Console.WriteLine("Nenhuma data valida foi fornecida.");
+                Console.WriteLine("Nenhuma data valida foi fornecida.\n");
                 break;
             }
             
@@ -142,7 +134,7 @@ while (continuar)
             }
             if(precot == null)
             {
-                Console.WriteLine("Nenhuma entrada foi fornecida");
+                Console.WriteLine("Nenhuma entrada foi fornecida.\n");
                 break;
             }
             
@@ -157,39 +149,85 @@ while (continuar)
                 }
                 catch
                 {
-                    Console.WriteLine("Formato de valor inválido, apenas numeros.");
+                    Console.WriteLine("Formato de valor inválido, apenas numeros.\n");
                     break;
                 }
             }
             if(precot == null)
             {
-                Console.WriteLine("Nenhuma entrada foi fornecida");
+                Console.WriteLine("Nenhuma entrada foi fornecida\n");
                 break;
             }
             Console.Write("Digite o codigo do serviço: ");
             string? codigoS = Console.ReadLine();
             if (codigoS == null)
             {
-                Console.WriteLine("Nenhuma entrada foi fornecida");
+                Console.WriteLine("Nenhuma entrada foi fornecida\n");
                 break;
             }
             Console.Write("Digite a descrição do serviço: ");
             string? descricaoS = Console.ReadLine();
             if (descricaoS == null)
             {
-                Console.WriteLine("Nenhuma entrada foi fornecida");
+                Console.WriteLine("Nenhuma entrada foi fornecida.\n");
                 break;
             }
-            PacoteTuristico NovoPacote = new PacoteTuristico(codigoS,codigop,descricaoS, nome, DataInicio.Value, DataFim.Value, preco, vagas);
+            PacoteTuristico NovoPacote = new PacoteTuristico(codigoS, codigop, descricaoS, nome, DataInicio.Value, DataFim.Value, preco, vagas);
             agencia.CadastrarPacote(NovoPacote);
             break;
-            
+
         case "3":
-        // continuar
+            Console.Write("Digite o nome do cliente a ser cadastrado: ");
+            string? NomeCliente = Console.ReadLine();
+            if(NomeCliente == null)
+            {
+                Console.WriteLine("Nenhuma entrada foi fornecida.\n");
+                break;
+            }
+            Console.Write("Digite o cpf do cliente: ");
+            string? cpf = Console.ReadLine();
+            if(cpf == null)
+            {
+                Console.WriteLine("Nenhuma entrada foi fornecida.\n");
+                break;
+            }
+            Console.Write("Digite o contato do cliente: ");
+            string? contato = Console.ReadLine();
+            if(contato == null)
+            {
+                Console.WriteLine("Nenhuma entrada foi fornecida.\n");
+                break;
+            }
+            Cliente NovoCliente = new Cliente(NomeCliente, cpf, contato);
+            agencia.CadastrarCliente(NovoCliente);
+            break;
+        
+        case "4":
+        //continuar o Consultar pacote por codigo
+            
+            break;
 
+        case "5":
+        //continuar o listar destino por codigo
 
+            break;
 
+        case "6":
+        //continuar o listar cliente por codigo
 
+            break;
+
+        case "7":
+        //continuar o listar todos de cada um, com switch case mesmo tipo case 1 cliente, case 2 pacotes, case 3 destinos
+
+            break;
+        
+        case "0":
+            //sair
+
+            break;
+        default:
+            //Digite uma opção válida
 
 
 

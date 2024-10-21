@@ -29,7 +29,7 @@ public class Agencia
             if(destinoExistente.CodigoDestino == Destino.CodigoDestino)
             {
                 Console.WriteLine("\nEsse destino já está cadastrado.\n");
-                return;
+                break;
             }
         }
         
@@ -58,6 +58,7 @@ public class Agencia
         foreach(var destino in Destinos)
         {
             destino.ExibirInformacoesDestino();
+            return;
         }
     }
     public void CadastrarCliente(Cliente Cliente)
@@ -67,17 +68,19 @@ public class Agencia
             if(cliente == null)
             {
                 Console.WriteLine("\nCliente inválido. Não pode ser nulo.\n");
-                return;
+                break;
             }
         }
         foreach(var cliente in Clientes)
         {
-            if(cliente == Cliente)
+            if(cliente.IdCliente == Cliente.IdCliente)
             {
                 Console.WriteLine("\nCliente já cadastrado.\n");
+                break;
             }
         }
         Clientes.Add(Cliente);
+        Console.WriteLine("Cliente cadastrado com sucesso.\n");
     }
     public void ConsultarClientePorId(string IdCliente)
     {
