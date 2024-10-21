@@ -26,13 +26,13 @@ public class Agencia
         }
         foreach(var destinoExistente in Destinos)
         {
-            if(destinoExistente.CodigoDestino == Destino.CodigoDestino)
+            if(destinoExistente.CodigoDestino == destinoExistente.CodigoDestino)
             {
                 Console.WriteLine("\nEsse destino já está cadastrado.\n");
-                break;
+                return;
             }
         }
-        
+
         Destinos.Add(Destino);
         Console.WriteLine("\nDestino cadastrado com sucesso.\n");
     }
