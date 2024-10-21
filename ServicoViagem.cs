@@ -1,7 +1,7 @@
 public abstract class ServicoViagem
 {   
     //Colocando propriedades
-    private string CodigoServico { get; set; } //Codigo só poderá ser usado nessa classe ou em classes derivadas por conta do protected
+    protected string CodigoServico { get; set; } //Codigo só poderá ser usado nessa classe ou em classes derivadas por conta do protected
     public string DescricaoServico { get; set; }
     public ServicoViagem(string codigoServico, string descricaoServico)
     {

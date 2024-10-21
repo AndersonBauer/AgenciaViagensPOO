@@ -19,24 +19,22 @@ public class Agencia
     public void CadastrarDestino(Destino Destino)
     {   
         // percorendo a lista de destinos para ver se nao tem uma destino ja cadastrado ou se esta nulo
-        foreach(var destino in Destinos)
+        if(Destino == null)
         {
-            if(destino == Destino)
+            Console.WriteLine("Destino inválido. Não pode ser nulo\n");
+            return;
+        }
+        foreach(var destinoExistente in Destinos)
+        {
+            if(destinoExistente.CodigoDestino == Destino.CodigoDestino)
             {
-                Console.WriteLine("Esse destino já está cadastrado.");
+                Console.WriteLine("\nEsse destino já está cadastrado.\n");
                 return;
             }
         }
-        foreach(var destino in Destinos)
-        {
-            if(destino == null)
-            {
-                Console.WriteLine("Destino inválido. Não pode ser nulo");
-                return;
-            }
-        }
+        
         Destinos.Add(Destino);
-        Console.WriteLine("Destino cadastrado com sucesso.");
+        Console.WriteLine("\nDestino cadastrado com sucesso.\n");
     }
     public void ConsultarDestinoPorCodigo(string codigoDestino)
     {
@@ -48,13 +46,13 @@ public class Agencia
                 return;
             }
         }
-        Console.WriteLine("Destino com o codigo informado não foi encontrado.");
+        Console.WriteLine("\nDestino com o codigo informado não foi encontrado.\n");
     }
     public void ListarDestino()
     {
         if (Destinos.Count == 0)
         {
-            Console.WriteLine("Não ha destinos cadastrados");
+            Console.WriteLine("\nNão ha destinos cadastrados \n");
             return;
         }
         foreach(var destino in Destinos)
@@ -68,7 +66,7 @@ public class Agencia
         {
             if(cliente == null)
             {
-                Console.WriteLine("Cliente inválido. Não pode ser nulo.");
+                Console.WriteLine("\nCliente inválido. Não pode ser nulo.\n");
                 return;
             }
         }
@@ -76,7 +74,7 @@ public class Agencia
         {
             if(cliente == Cliente)
             {
-                Console.WriteLine("Cliente já cadastrado.");
+                Console.WriteLine("\nCliente já cadastrado.\n");
             }
         }
         Clientes.Add(Cliente);
@@ -91,13 +89,13 @@ public class Agencia
                 return;
             }
         }
-        Console.WriteLine("Código do cliente não encontrado!");
+        Console.WriteLine("\nCódigo do cliente não encontrado!\n");
     }
     public void ListarCliente()
     {
         if(Clientes.Count == 0)
         {
-            Console.WriteLine("Não existem clientes cadastrados.");
+            Console.WriteLine("\nNão existem clientes cadastrados.\n");
         }
         foreach(var cliente in Clientes)
         {
@@ -106,23 +104,21 @@ public class Agencia
     }
     public void CadastrarPacote(PacoteTuristico PacoteTuristico)
     {
-        foreach(var pacoteT in PacotesTuristicos)
+        if(PacoteTuristico == null)
         {
-            if(pacoteT == null)
-            {
-                Console.WriteLine("Pacote turistico inválido. Não pode ser nulo.");
+                Console.WriteLine("\nPacote turistico inválido. Não pode ser nulo.");
                 return;
-            }
         }
         foreach(var pacote in PacotesTuristicos)
         {
             if(pacote.CodigoPacote == PacoteTuristico.CodigoPacote)
             {
-                Console.WriteLine("Pacote turistico já cadastrado.");
+                Console.WriteLine("\nPacote turistico já cadastrado.\n");
+                return;
             }
         }
         PacotesTuristicos.Add(PacoteTuristico);
-        Console.WriteLine("Pacote turistico cadastrado com sucesso!");
+        Console.WriteLine("\nPacote turistico cadastrado com sucesso!\n");
     }
     public PacoteTuristico ConsultarPacotePorCodigo(string CodigoPacote)
     {
@@ -130,7 +126,7 @@ public class Agencia
         {
             if(pacote.CodigoPacote == CodigoPacote)
             {
-                Console.WriteLine($"\nPacote encontrado\nDestino do Pacote: {pacote.Destino}\nCodigo do pacote: {pacote.CodigoPacote}\nDescrição: {pacote.DescricaoServico}\nDataInicio: {pacote.DataInicio}\nData fim: {pacote.DataFim}\nPreço do pacote: {pacote.Preco}");
+                Console.WriteLine($"\nPacote encontrado\nDestino do Pacote: {pacote.Destino}\nCodigo do pacote: {pacote.CodigoPacote}\nDescrição: {pacote.DescricaoServico}\nDataInicio: {pacote.DataInicio}\nData fim: {pacote.DataFim}\nPreço do pacote: {pacote.Preco}\n");
                 return pacote;
             }
         }
@@ -140,7 +136,7 @@ public class Agencia
     {
         if(PacotesTuristicos.Count == 0)
         {
-            Console.WriteLine("Nenhum pacote encontrado.");
+            Console.WriteLine("\nNenhum pacote encontrado.\n");
         }
         foreach(var pacote in PacotesTuristicos)
         {
@@ -151,30 +147,30 @@ public class Agencia
     {
         if(cliente == null)
         {
-            Console.WriteLine("cliente invalido.");
+            Console.WriteLine("\nCliente invalido.zn");
             return;
         }
         var pacote = ConsultarPacotePorCodigo(codigoPacote);
         if(codigoPacote  == null)
         {
-            Console.WriteLine("Pacote não encontrado.");
+            Console.WriteLine("\nPacote não encontrado.\n");
             return;
         }
         if(pacote == null)
         {
-            Console.WriteLine("Pacote não encontrado.");
+            Console.WriteLine("\nPacote não encontrado.\n");
             return;
         }
         if(pacote.VagasDisponiveis<= 0)
         {
-            Console.WriteLine("Não há vagas disponiveis para esse pacote.");
+            Console.WriteLine("\nNão há vagas disponiveis para esse pacote.\n");
         }
         pacote.Reservar();
-        Console.WriteLine("Pacote Reservado!");
+        Console.WriteLine("\nPacote Reservado!\n");
     }
     public void CancelarReserva(string codigoReserva)
     {
-        Reserva reservaEncontrada = null;
+        Reserva? reservaEncontrada = null;
         foreach(var reserva in Reservas)
         {
             if (reserva.CodigoReserva == codigoReserva)
@@ -185,11 +181,11 @@ public class Agencia
             if(reservaEncontrada != null)
             {
                 reservaEncontrada.Cancelar();
-                Console.WriteLine($"Reserva com código {codigoReserva} foi cancelada com sucesso.");
+                Console.WriteLine($"\nReserva com código {codigoReserva} foi cancelada com sucesso.\n");
             }
             else
             {
-                Console.WriteLine("Reserva não encontrada.");
+                Console.WriteLine("\nReserva não encontrada.\n");
             }
         }
     }

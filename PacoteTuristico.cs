@@ -2,13 +2,13 @@ using System.Xml.Serialization;
 
 public class PacoteTuristico : ServicoViagem, IReservavel, IPesquisavel
 {
-    public Destino Destino { get; set; }
+    public string Destino { get; set; }
     public string CodigoPacote { get; set; }
     public DateTime DataInicio { get; set; }
     public DateTime DataFim { get; set; }
     public decimal Preco { get; set; }
     public int VagasDisponiveis { get; set; }
-    public PacoteTuristico(string codigoServico,string codigoPacote, string descricaoServico,Destino destino, DateTime dataInicio, DateTime dataFim, decimal preco, int vagasDisponiveis)
+    public PacoteTuristico(string codigoServico,string codigoPacote, string descricaoServico,string destino, DateTime dataInicio, DateTime dataFim, decimal preco, int vagasDisponiveis)
     :base(codigoServico, descricaoServico)
     {
         Destino = destino;
