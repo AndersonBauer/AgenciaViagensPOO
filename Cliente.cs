@@ -12,6 +12,6 @@ public class Cliente
 
     public void ExibirInformacoesCliente()
     {
-        Console.WriteLine($"\nId: {IdCliente}\nNome: {Nome}\nContato: {Contato}");
+        Console.WriteLine($"\nId: {IdCliente}\nNome: {Nome}\nContato: {Contato}\n");
     }
 }

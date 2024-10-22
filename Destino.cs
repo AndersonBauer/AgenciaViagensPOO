@@ -14,6 +14,6 @@ public class Destino : IPesquisavel
 
     public void ExibirInformacoesDestino()
     {
-        Console.WriteLine($"\nCodigo: {CodigoDestino}\nNome do Local: {NomeLocal}\nPais: {Pais}\nDescrição do destino: {DescricaoDestino}");
+        Console.WriteLine($"\nCodigo: {CodigoDestino}\nNome do Local: {NomeLocal}\nPais: {Pais}\nDescrição do destino: {DescricaoDestino}\n");
     }
 }

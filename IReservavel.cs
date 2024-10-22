@@ -1,4 +1,4 @@
-public interface IReservavel 
+public interface IReservavel
 {
     public void Reservar()
     {

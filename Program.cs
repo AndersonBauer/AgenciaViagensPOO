@@ -13,6 +13,8 @@ while (continuar)
     Console.WriteLine("5 - Listar Destino por código");
     Console.WriteLine("6 - Listar Destino por código");
     Console.WriteLine("7 - Listagem de todas as informações");
+    Console.WriteLine("8 - Realizar reserva");
+    Console.WriteLine("9 - Cancelar reserva");
     Console.WriteLine("0 - Sair");
     Console.Write("Escolha uma opção: ");
 
@@ -59,14 +61,14 @@ while (continuar)
 
             Console.Write("Digite o nome do destino do pacote turistico: ");
             string? nome = Console.ReadLine();
-            if(nome == null)
+            if(string.IsNullOrEmpty(nome))
             {
                 Console.WriteLine("Nenhuma entrada foi fornecida.\n");
                 break;
             }
             Console.Write("Digite o codigo do pacote: ");
             string? codigop = Console.ReadLine();
-            if(codigop == null)
+            if(string.IsNullOrEmpty(codigop))
             {
                 Console.WriteLine("Nenhuma entrada foi fornecida.\n");
                 break;
@@ -74,7 +76,7 @@ while (continuar)
             Console.Write("Digite a data em que inicia este pacote: ");
             string? DataIString = Console.ReadLine();
             DateTime? DataInicio = null;
-            if(DataIString != null)
+            if(!string.IsNullOrEmpty(DataIString))
             {
                 try
                 {
@@ -86,7 +88,7 @@ while (continuar)
                     break;
                 }
                 
-            if(DataIString == null)
+            if(string.IsNullOrEmpty(DataIString))
             {
                 Console.WriteLine("Nenhuma entrada foi fornecida.\n");
                 break;
@@ -109,7 +111,7 @@ while (continuar)
                     break;
                 }
                 
-            if(DataFim == null)
+            if(string.IsNullOrEmpty(DataFString))
             {
                 Console.WriteLine("Nenhuma data valida foi fornecida.\n");
                 break;
@@ -132,7 +134,7 @@ while (continuar)
                     break;
                 }
             }
-            if(precot == null)
+            if(string.IsNullOrEmpty(precot))
             {
                 Console.WriteLine("Nenhuma entrada foi fornecida.\n");
                 break;
@@ -141,7 +143,7 @@ while (continuar)
             Console.Write("Quantas vagas terão esse pacote ? ");
             string? vagast = Console.ReadLine();
             int vagas = 0;
-            if(vagast!= null)
+            if(!string.IsNullOrEmpty(vagast))
             {
                 try
                 {
@@ -153,21 +155,21 @@ while (continuar)
                     break;
                 }
             }
-            if(precot == null)
+            if(string.IsNullOrEmpty(vagast))
             {
                 Console.WriteLine("Nenhuma entrada foi fornecida\n");
                 break;
             }
             Console.Write("Digite o codigo do serviço: ");
             string? codigoS = Console.ReadLine();
-            if (codigoS == null)
+            if (string.IsNullOrEmpty(codigoS))
             {
                 Console.WriteLine("Nenhuma entrada foi fornecida\n");
                 break;
             }
             Console.Write("Digite a descrição do serviço: ");
             string? descricaoS = Console.ReadLine();
-            if (descricaoS == null)
+            if (string.IsNullOrEmpty(descricaoS))
             {
                 Console.WriteLine("Nenhuma entrada foi fornecida.\n");
                 break;
@@ -179,21 +181,21 @@ while (continuar)
         case "3":
             Console.Write("Digite o nome do cliente a ser cadastrado: ");
             string? NomeCliente = Console.ReadLine();
-            if(NomeCliente == null)
+            if(string.IsNullOrEmpty(NomeCliente))
             {
                 Console.WriteLine("Nenhuma entrada foi fornecida.\n");
                 break;
             }
             Console.Write("Digite o cpf do cliente: ");
             string? cpf = Console.ReadLine();
-            if(cpf == null)
+            if(string.IsNullOrEmpty(cpf))
             {
                 Console.WriteLine("Nenhuma entrada foi fornecida.\n");
                 break;
             }
             Console.Write("Digite o contato do cliente: ");
             string? contato = Console.ReadLine();
-            if(contato == null)
+            if(string.IsNullOrEmpty(contato))
             {
                 Console.WriteLine("Nenhuma entrada foi fornecida.\n");
                 break;
@@ -205,7 +207,7 @@ while (continuar)
         case "4":
             Console.Write("Digite o Código do Pacote que deseja consultar: ");
             string? PacoteConsulta = Console.ReadLine();
-            if(PacoteConsulta == null)
+            if(string.IsNullOrEmpty(PacoteConsulta))
             {
                 Console.WriteLine("Nenhuma entrada foi informada.\n");
                 break;
@@ -215,29 +217,102 @@ while (continuar)
             break;
 
         case "5":
-        //continuar o listar destino por codigo
+            Console.Write("Digite o Código do destino que deseja consultar: ");
+            string? DestinoConsulta = Console.ReadLine();
+            if(string.IsNullOrEmpty(DestinoConsulta))
+            {
+                Console.WriteLine("Nenhuma entrada foi informada.\n");
+                break;
+            }
+            agencia.ConsultarDestinoPorCodigo(DestinoConsulta);
 
             break;
 
         case "6":
-        //continuar o listar cliente por codigo
+            Console.Write("Digite o ID do Cliente que deseja consultar: ");
+            string? ClienteConsulta = Console.ReadLine();
+            if(string.IsNullOrEmpty(ClienteConsulta))
+            {
+                Console.WriteLine("Nenhuma entrada foi informada.\n");
+                break;
+            }
+            agencia.ConsultarClientePorId(ClienteConsulta);
 
             break;
 
         case "7":
-        //continuar o listar todos de cada um, com switch case mesmo tipo case 1 cliente, case 2 pacotes, case 3 destinos
+            Console.WriteLine("1 - Listar Cliente");
+            Console.WriteLine("2 - Listar Pacote");
+            Console.WriteLine("3 - Listar Destino");
+            Console.WriteLine("0 - Voltar");
+            string? opC = Console.ReadLine();
+            switch(opC)
+                {
+                    case "1":
+                        agencia.ListarCliente();
+                        break;
+                    case "2":
+                        agencia.ListarPacote();
+                        break;
+                    case "3":
+                        agencia.ListarDestino();
+                        break;
+                    case "0":
+                        Console.WriteLine("\nVoltando...\n");
+                        continue;
+                }
+            break;
 
+        case "8":
+            Console.Write("Digite o código do pacote desejado: ");
+            string? PesqP = Console.ReadLine();
+            string pesqp = "";
+
+            if(string.IsNullOrEmpty(PesqP))
+            {
+                Console.WriteLine("Nenhuma entrada foi informada.");
+                break;
+            }
+            else
+            {
+                pesqp = PesqP;    
+            }
+            Console.Write("Digite o cpf do Cliente: ");
+            string? PesqC = Console.ReadLine();
+            string pesqc ="";
+
+            if(string.IsNullOrEmpty(PesqC))
+            {
+                Console.WriteLine("Nenhuma entrada foi informada.");
+                break;
+            }
+            else
+            {
+                pesqc = PesqC;
+            }
+            agencia.ReservarPacote(pesqp, pesqc);
+            break;
+
+        case"9":
+            Console.Write("Digite o código da reserva que deseja excluir: ");
+            string? CodigoCancela = Console.ReadLine();
+            
+            if(string.IsNullOrEmpty(CodigoCancela))
+            {
+                Console.WriteLine("Nenhuma entrada foi cadastrada");
+            }
+            else
+            {
+               agencia.CancelarReserva(CodigoCancela); 
+            }
             break;
         
         case "0":
-            //sair
-
+            Console.WriteLine("\nFechando programa...\n");
+            continuar = false;
             break;
         default:
-            //Digite uma opção válida
-
-
-
-            break; //esse break é o break do switch
+            Console.WriteLine("\nDigite uma opção valida\n");
+            continue; 
     }
 }

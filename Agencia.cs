@@ -1,6 +1,7 @@
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.Marshalling;
+using System.Security.Cryptography;
 using Microsoft.VisualBasic;
 public class Agencia 
 {
@@ -133,9 +134,10 @@ public class Agencia
                 return pacote;
             }
         }
-        Console.WriteLine("");
+        
         return null;
     }
+    
     public void ListarPacote()
     {
         if(PacotesTuristicos.Count == 0)
@@ -147,50 +149,62 @@ public class Agencia
             Console.WriteLine($"\nPacote encontrado\nDestino do Pacote: {pacote.Destino}\nCodigo do pacote: {pacote.CodigoPacote}\nDescrição: {pacote.DescricaoServico}\nDataInicio: {pacote.DataInicio}\nData fim: {pacote.DataFim}\nPreço do pacote: {pacote.Preco}\n");
         }
     }
-    public void ReservarPacote(string codigoPacote, Cliente cliente)
+    public void ReservarPacote(string codigoPacote, string IdCliente)
     {
-        if(cliente == null)
+        if(string.IsNullOrEmpty(IdCliente))
         {
-            Console.WriteLine("\nCliente invalido.zn");
+            Console.WriteLine("\nCliente invalido.\n");
+            return;
+        }
+        
+        if(string.IsNullOrEmpty(codigoPacote))
+        {
+            Console.WriteLine("\nPacote não encontrado.\n");
             return;
         }
         var pacote = ConsultarPacotePorCodigo(codigoPacote);
-        if(codigoPacote  == null)
-        {
-            Console.WriteLine("\nPacote não encontrado.\n");
-            return;
-        }
-        if(pacote == null)
-        {
-            Console.WriteLine("\nPacote não encontrado.\n");
-            return;
-        }
-        if(pacote.VagasDisponiveis<= 0)
+        if(pacote.VagasDisponiveis <= 0)
         {
             Console.WriteLine("\nNão há vagas disponiveis para esse pacote.\n");
+            return;
         }
-        pacote.Reservar();
-        Console.WriteLine("\nPacote Reservado!\n");
+        string? codigoReserva;
+        Console.WriteLine("Digite o codigo da reserva para cadastrar: ");
+        codigoReserva = Console.ReadLine();
+        if(string.IsNullOrEmpty(codigoReserva))
+        {
+            Console.WriteLine("Código da reserva invalido.");
+            return;
+        }
+        var cliente = Clientes.FirstOrDefault(c => c.IdCliente == IdCliente);
+        if(cliente == null)
+        {
+            Console.WriteLine("Cliente Não encontrado.");
+            return;
+        }
+        var novaReserva = new Reserva(codigoReserva, pacote, cliente);
+        Reservas.Add(novaReserva);
+        Console.WriteLine("Reservado !!");
     }
     public void CancelarReserva(string codigoReserva)
     {
-        Reserva? reservaEncontrada = null;
-        foreach(var reserva in Reservas)
+        bool reservaEncontrada = false;
+        foreach (var reserva in Reservas)
         {
-            if (reserva.CodigoReserva == codigoReserva)
+            if(reserva.CodigoReserva == codigoReserva)
             {
-                reservaEncontrada = reserva;
+                reservaEncontrada = true;
+                reserva.Cancelar();
+                Reservas.Remove(reserva);
                 break;
             }
-            if(reservaEncontrada != null)
+            if(!reservaEncontrada)
             {
-                reservaEncontrada.Cancelar();
-                Console.WriteLine($"\nReserva com código {codigoReserva} foi cancelada com sucesso.\n");
-            }
-            else
-            {
-                Console.WriteLine("\nReserva não encontrada.\n");
+                Console.WriteLine("Reserva não encontrada.");
+                return;
             }
         }
+        
+        
     }
 }
