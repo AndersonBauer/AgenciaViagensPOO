@@ -129,10 +129,11 @@ public class Agencia
         {
             if(pacote.CodigoPacote == CodigoPacote)
             {
-                Console.WriteLine($"\nPacote encontrado\nDestino do Pacote: {pacote.Destino}\nCodigo do pacote: {pacote.CodigoPacote}\nDescrição: {pacote.DescricaoServico}\nDataInicio: {pacote.DataInicio}\nData fim: {pacote.DataFim}\nPreço do pacote: {pacote.Preco}\n");
+                Console.WriteLine($"\nPacote encontrado\nDestino do Pacote: {pacote.Destino}\nCodigo do pacote: {pacote.CodigoPacote}\nDescrição: {pacote.DescricaoServico}\nDataInicio: {pacote.DataInicio.ToString("dd/MM/yyyy")}\nData fim: {pacote.DataFim.ToString("dd/MM/yyyy")}\nPreço do pacote: {pacote.Preco}\n");
                 return pacote;
             }
         }
+        Console.WriteLine("");
         return null;
     }
     public void ListarPacote()

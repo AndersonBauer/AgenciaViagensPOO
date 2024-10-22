@@ -120,7 +120,7 @@ while (continuar)
             Console.Write("Digite o valor que vai custar este pacote: ");
             string? precot = Console.ReadLine();
             decimal preco = 0;
-            if(precot!= null)
+            if(precot != null)
             {
                 try
                 {
@@ -138,7 +138,7 @@ while (continuar)
                 break;
             }
             
-            Console.Write("Quantas vagas terão esse pacote ?");
+            Console.Write("Quantas vagas terão esse pacote ? ");
             string? vagast = Console.ReadLine();
             int vagas = 0;
             if(vagast!= null)
@@ -203,7 +203,14 @@ while (continuar)
             break;
         
         case "4":
-        //continuar o Consultar pacote por codigo
+            Console.Write("Digite o Código do Pacote que deseja consultar: ");
+            string? PacoteConsulta = Console.ReadLine();
+            if(PacoteConsulta == null)
+            {
+                Console.WriteLine("Nenhuma entrada foi informada.\n");
+                break;
+            }
+            agencia.ConsultarPacotePorCodigo(PacoteConsulta);
             
             break;
 
