@@ -11,7 +11,7 @@ while (continuar)
     Console.WriteLine("3 - Cadastrar Cliente");
     Console.WriteLine("4 - Consultar Pacote por Código");
     Console.WriteLine("5 - Listar Destino por código");
-    Console.WriteLine("6 - Listar Destino por código");
+    Console.WriteLine("6 - Listar Cliente por código");
     Console.WriteLine("7 - Listagem de todas as informações");
     Console.WriteLine("8 - Realizar reserva");
     Console.WriteLine("9 - Cancelar reserva");
