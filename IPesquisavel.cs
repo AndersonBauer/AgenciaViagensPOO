@@ -4,4 +4,8 @@ public interface IPesquisavel
     {
         
     }
+    public void PesquisarPorNome(string Nome)
+    {
+        
+    }
 }
