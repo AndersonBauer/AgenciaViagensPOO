@@ -1,5 +1,5 @@
 Explicação de como usar o programa.
-
+.
 1 - Inicie o programa com o comando "dotnet run".
 2 - Leia o menu e escolha a opção que deseja.
 2.1 - OBS: Todos os dados retornam ao menu se não forem dadas entradas ou entradas no formato errado.
