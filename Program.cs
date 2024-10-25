@@ -260,6 +260,10 @@ while (continuar)
                     case "0":
                         Console.WriteLine("\nVoltando...\n");
                         continue;
+                    default:
+                        Console.WriteLine("\nDigite uma opção válida.\n");
+                        break;
+
                 }
             break;
 
