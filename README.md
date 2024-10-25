@@ -20,5 +20,5 @@ Explicação de como usar o programa.
 12 - Caso seja digitado qualquer outra coisa ele avisará que deve ser digitada uma opção válida.  
 Fim!  
 
-Link do Video:    
+Link do Video: https://drive.google.com/file/d/1jrwTMqDQlnTY4Ib2QuIQx3hMyBOr7bON/view?usp=sharing
 Link do texto: https://drive.google.com/file/d/1oK6FMrWXSZLgAiUxSSVj3tGxLFzBmWO4/view?usp=sharing
