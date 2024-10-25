@@ -21,4 +21,4 @@ Explicação de como usar o programa.
 Fim!  
 
 Link do Video:    
-Link do texto:     
+Link do texto: https://drive.google.com/file/d/1oK6FMrWXSZLgAiUxSSVj3tGxLFzBmWO4/view?usp=sharing
